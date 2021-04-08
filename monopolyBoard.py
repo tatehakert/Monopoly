@@ -23,15 +23,14 @@ yellow = (242,245,6)
 default_background = (235, 243, 225)
 #current screen dimensions
 # need to have these be adjustable 
-screen_width = 1200
-screen_height = 1200
-
+screen_height = 1000
+screen_width = round(screen_height*(4/3))
 #initialize the screen
 screen = pygame.display.set_mode((screen_width, screen_height))
 screen.fill(default_background)
 
 #largest subsqare
-outline_cards = pygame.draw.rect(screen, (0, 0, 0), (200,200, 800, 800), 3)  # width = 3
+outline_cards = pygame.draw.rect(screen, (0, 0, 0), (screen_height*(1/6),screen_height*(1/6), screen_height - screen_height*(1/6), screen_height - screen_height*(1/6)), 3)  # width = 3
 
 #print a message of a color at an x,y with given size
 def message(msg,color,x_loc, y_loc, size):
@@ -46,8 +45,8 @@ class corner_square:
     def __init__(self):
         self.x_loc = 0
         self.y_loc = 0
-        self.width = 1/6 * screen_width
-        self.height = 1/6 * screen_width
+        self.width = 1/6 * screen_height
+        self.height = 1/6 * screen_height
     #set location
     def set_x_and_y (self, x_loc, y_loc):
         self.x_loc = x_loc
@@ -65,8 +64,8 @@ class board_square:
     def __init__(self):
         self.x_loc = 0
         self.y_loc = 0
-        self.width = 200
-        self.height = 88.8
+        self.width = screen_height * (1/6)
+        self.height = screen_height * .074
 
     #change the positions
     def set_x_and_y (self, x_loc, y_loc):
@@ -77,7 +76,7 @@ class board_square:
     def set_to_vertical(self):
         temp = self.width
         self.width = self.height
-        self.height = 200
+        self.height = screen_height * (1/6)
 
     #set the space to correspond to a color, orientation is which side of the space the color designation needs to go on
     def set_color(self, card_color, orientation):
@@ -122,20 +121,20 @@ def draw_corners():
     top_left_corner.draw()
     #bottom left corner
     bottom_left_corner = corner_square()
-    bottom_left_corner.set_x_and_y(0,1000)
+    bottom_left_corner.set_x_and_y(0,screen_height - screen_height*(1/6))
     bottom_left_corner.draw()
     #top right corner
     top_right_corner = corner_square()
-    top_left_corner.set_x_and_y(1000,0)
-    top_left_corner.draw()
+    top_right_corner.set_x_and_y(screen_height - screen_height*(1/6),0)
+    top_right_corner.draw()
     #bottom right corner
     bottom_right_corner = corner_square()
-    bottom_right_corner.set_x_and_y(1000,1000)
+    bottom_right_corner.set_x_and_y(screen_height - screen_height*(1/6),screen_height - screen_height*(1/6))
     bottom_right_corner.draw()
 
 def draw_left_side():
     card_x = 0
-    card_y = 200
+    card_y = screen_height*(1/6)
     for i in range (9):
         test = board_square()
         test.set_x_and_y(card_x,card_y)
@@ -145,24 +144,23 @@ def draw_left_side():
             test.set_color(orange, "right")
         if(i == 5) or (i == 6) or (i == 8):
             test.set_color(pink, "right")
-        card_y = card_y+88.8
+        card_y = card_y+ screen_height*(.074)
 
 def draw_right_side():
-    card_x = 1000
-    card_y = 200
+    card_x = screen_height - screen_height*(1/6)
+    card_y = screen_height*(1/6)
     for i in range (9):
         test = board_square()
         test.set_x_and_y(card_x,card_y)
         test.draw()
         if( i == 0 ) or (i == 1) or (i == 3):
             test.set_color(green, "left")
-        card_y = card_y+88.8
         if (i == 6) or (i == 8):
             test.set_color(dark_blue, "left")
-      
+        card_y = card_y + screen_height*(.074)
 
 def draw_top_side():
-    card_x = 200
+    card_x = screen_height*(1/6)
     card_y = 0
     for i in range (9):
         test = board_square()
@@ -173,11 +171,11 @@ def draw_top_side():
             test.set_color(red, "bottom")
         if(i == 5) or (i == 6) or (i == 8):
             test.set_color(yellow, "bottom")
-        card_x = card_x+88.8
+        card_x = card_x + screen_height*(.074)
 
 def draw_bottom_side():
-    card_x = 200
-    card_y = 1000
+    card_x = screen_height*(1/6)
+    card_y = screen_height - screen_height*(1/6)
     for i in range (9):
         test = board_square()
         test.set_to_vertical()
@@ -188,12 +186,12 @@ def draw_bottom_side():
         if (i == 6) or (i == 8):
             test.set_color(brown,"top")
 
-        card_x = card_x+88.8
+        card_x = card_x + screen_height*(.074)
 
 def draw_board():
     #chance sqaures
-    community_chance_card_stack = pygame.draw.rect(screen, (0, 0, 0), (300, 300,300, 200), 3)  # width = 3
-    chance_card_stack = pygame.draw.rect(screen, (0, 0, 0), (600, 700,300, 200), 3)  # width = 3
+    community_chance_card_stack = pygame.draw.rect(screen, (0, 0, 0), (screen_height*1.5/6, screen_height*1.5/6,200, 125), 3)  # width = 3
+    chance_card_stack = pygame.draw.rect(screen, (0, 0, 0), ((screen_height*4.5/6)-200, (screen_height*4.5/6)-125,200, 125), 3)  # width = 3
 
     draw_left_side()
     draw_right_side()
