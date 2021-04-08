@@ -6,15 +6,41 @@ players = {
         "position": 0,
         "balance": 1500,
         "in-jail": False,
-        "hasGetOutOfJailCard": False
+        "hasGetOutOfJailCard": False,
+        "properties": {
+            "utilities": [],
+            "railroads": [],
+            "purple": [],
+            "sky": [],
+            "pink": [],
+            "orange": [],
+            "red": [],
+            "yellow": [],
+            "green": [],
+            "blue": []
+        }
     },
     "2": {
         "position": 0,
         "balance": 1500,
         "in-jail": False,
-        "hasGetOutOfJailCard": False
+        "hasGetOutOfJailCard": False,
+        "properties": {
+            "utilities": [],
+            "railroads": [],
+            "purple": [],
+            "sky": [],
+            "pink": [],
+            "orange": [],
+            "red": [],
+            "yellow": [],
+            "green": [],
+            "blue": []
+        }
     }
 }
+
+
 
 boardPositions = {
     0: {
@@ -23,7 +49,7 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
     },
     1: {
         "name": "Mediterranean Avenue",
@@ -31,7 +57,13 @@ boardPositions = {
         "propertySet": "purple",
         "canPurchase": True,
         "purchasePrice": 60,
-        "hitCount": 0
+        "houseCost": 50,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 2,
+        "propertiesInSet": [1, 3],
+        "rentMultiplier": [1, 5, 15, 45, 80, 125],
     },
     2: {
         "name": "Community Chest",
@@ -39,7 +71,7 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
     },
     3: {
         "name": "Baltic Avenue",
@@ -47,7 +79,13 @@ boardPositions = {
         "propertySet": "purple",
         "canPurchase": True,
         "purchasePrice": 60,
-        "hitCount": 0
+        "houseCost": 50,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 4,
+        "propertiesInSet": [1, 3],
+        "rentMultiplier": [1, 5, 15, 45, 80, 125]
     },
     4: {
         "name": "Income Tax",
@@ -55,15 +93,20 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     5: {
         "name": "Reading Railroad",
         "role": None,
         "propertySet": None,
-        "canPurchase": 200,
-        "purchasePrice": None,
-        "hitCount": 0
+        "canPurchase": True,
+        "purchasePrice": 200,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 25,
+        "propertiesInSet": [5, 15, 25, 35],
+        "rentMultiplier": [0, 1, 2, 4, 8]
     },
     6: {
         "name": "Oriental Avenue",
@@ -71,7 +114,13 @@ boardPositions = {
         "propertySet": 'sky',
         "canPurchase": True,
         "purchasePrice": 100,
-        "hitCount": 0
+        "houseCost": 50,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 6,
+        "propertiesInSet": [6, 8, 9],
+        "rentMultiplier": [1, 5, 15, 45, 66.66666667, 91.66666667]
     },
     7: {
         "name": "Chance",
@@ -79,7 +128,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     8: {
         "name": "Vermont Avenue",
@@ -87,7 +137,13 @@ boardPositions = {
         "propertySet": 'sky',
         "canPurchase": True,
         "purchasePrice": 100,
-        "hitCount": 0
+        "houseCost": 50,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 6,
+        "propertiesInSet": [6, 8, 9],
+        "rentMultiplier": [1, 5, 15, 45, 66.66666667, 91.66666667]
     },
     9: {
         "name": "Connecticut Avenue",
@@ -95,7 +151,13 @@ boardPositions = {
         "propertySet": 'sky',
         "canPurchase": True,
         "purchasePrice": 120,
-        "hitCount": 0
+        "houseCost": 50,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 8,
+        "propertiesInSet": [6, 8, 9],
+        "rentMultiplier": [1, 5, 12.5, 37.5, 56.25, 75]
     },
     10: {
         "name": "Jail/Just Visiting",
@@ -103,7 +165,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     11: {
         "name": "St. Charles Place",
@@ -111,7 +174,13 @@ boardPositions = {
         "propertySet": "pink",
         "canPurchase": True,
         "purchasePrice": 140,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 10,
+        "propertiesInSet": [11, 13, 14],
+        "rentMultiplier": [1,5,15,45,62.5,75]
     },
     12: {
         "name": "Electric Company",
@@ -119,7 +188,10 @@ boardPositions = {
         "propertySet": "utilities",
         "canPurchase": True,
         "purchasePrice": 150,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
+        "propertiesInSet": [12, 28],
+        "rentMultiplier": [0, 4, 10]
     },
     13: {
         "name": "States Avenue",
@@ -127,7 +199,13 @@ boardPositions = {
         "propertySet": "pink",
         "canPurchase": True,
         "purchasePrice": 140,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 10,
+        "propertiesInSet": [11, 13, 14],
+        "rentMultiplier": [1,5,15,45,62.5,75]
     },
     14: {
         "name": "Virginia Avenue",
@@ -135,7 +213,13 @@ boardPositions = {
         "propertySet": "pink",
         "canPurchase": True,
         "purchasePrice": 160,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 12,
+        "propertiesInSet": [11, 13, 14],
+        "rentMultiplier": [1,5,15,41.66666667,58.33333333,75]
     },
     15: {
         "name": "Pennsylvania Railroad",
@@ -143,7 +227,11 @@ boardPositions = {
         "propertySet": "railroads",
         "canPurchase": True,
         "purchasePrice": 200,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 25,
+        "propertiesInSet": [5, 15, 25, 35],
+        "rentMultiplier": [0, 1, 2, 4, 8]
     },
     16: {
         "name": "St. James Place",
@@ -151,7 +239,13 @@ boardPositions = {
         "propertySet": "orange",
         "canPurchase": True,
         "purchasePrice": 180,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 14,
+        "propertiesInSet": [16, 18, 19],
+        "rentMultiplier": [1, 5, 14.28571429, 39.28571429, 53.57142857, 67.85714286]
     },
     17: {
         "name": "Community Chest",
@@ -159,7 +253,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     18: {
         "name": "Tennessee Avenue",
@@ -167,7 +262,13 @@ boardPositions = {
         "propertySet": "orange",
         "canPurchase": True,
         "purchasePrice": 180,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 14,
+        "propertiesInSet": [16, 18, 19],
+        "rentMultiplier": [1, 5, 14.28571429, 39.28571429, 53.57142857, 67.85714286]
     },
     19: {
         "name": "New York Avenue",
@@ -175,7 +276,13 @@ boardPositions = {
         "propertySet": "orange",
         "canPurchase": True,
         "purchasePrice": 200,
-        "hitCount": 0
+        "houseCost": 100,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 16,
+        "propertiesInSet": [16, 18, 19],
+        "rentMultiplier": [1, 5, 13.75, 37.5, 50, 62.5]
     },
     20: {
         "name": "Free Parking",
@@ -183,7 +290,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     21: {
         "name": "Kentucky Avenue",
@@ -191,7 +299,13 @@ boardPositions = {
         "propertySet": "red",
         "canPurchase": True,
         "purchasePrice": 220,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 18,
+        "propertiesInSet": [21, 23, 24],
+        "rentMultiplier": [1, 5, 13.88888889, 38.88888889, 48.61111111, 58.33333333]
     },
     22: {
         "name": "Chance",
@@ -199,7 +313,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     23: {
         "name": "Indiana Avenue",
@@ -207,7 +322,13 @@ boardPositions = {
         "propertySet": "red",
         "canPurchase": True,
         "purchasePrice": 220,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 18,
+        "propertiesInSet": [21, 23, 24],
+        "rentMultiplier": [1, 5, 13.88888889, 38.88888889, 48.61111111, 58.33333333]
     },
     24: {
         "name": "Illinois Avenue",
@@ -215,7 +336,13 @@ boardPositions = {
         "propertySet": "red",
         "canPurchase": True,
         "purchasePrice": 240,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 20,
+        "propertiesInSet": [21, 23, 24],
+        "rentMultiplier": [1, 5	, 15, 37.5, 46.25, 55]
     },
     25: {
         "name": "B & O Railroad",
@@ -223,7 +350,11 @@ boardPositions = {
         "propertySet": "railroads",
         "canPurchase": True,
         "purchasePrice": 200,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 25,
+        "propertiesInSet": [5, 15, 25, 35],
+        "rentMultiplier": [0, 1, 2, 4, 8]
     },
     26: {
         "name": "Atlantic Avenue",
@@ -231,7 +362,13 @@ boardPositions = {
         "propertySet": "yellow",
         "canPurchase": True,
         "purchasePrice": 260,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 22,
+        "propertiesInSet": [26, 27, 29],
+        "rentMultiplier": [1, 5, 15, 36.36363636, 44.31818182, 52.27272727]
     },
     27: {
         "name": "Ventnor Avenue",
@@ -239,15 +376,24 @@ boardPositions = {
         "propertySet": "yellow",
         "canPurchase": True,
         "purchasePrice": 260,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 22,
+        "propertiesInSet": [26, 27, 29],
+        "rentMultiplier": [1, 5, 15, 36.36363636, 44.31818182, 52.27272727]
     },
     28: {
         "name": "Water Works",
         "role": "utility",
         "propertySet": "utilities",
-        "canPurchase": False,
-        "purchasePrice": None,
-        "hitCount": 0
+        "canPurchase": True,
+        "purchasePrice": 150,
+        "hitCount": 0,
+        "ownedBy": None,
+        "propertiesInSet": [12, 28],
+        "rentMultiplier": [0, 4, 10]
     },
     29: {
         "name": "Marvin Gardens",
@@ -255,7 +401,13 @@ boardPositions = {
         "propertySet": "yellow",
         "canPurchase": True,
         "purchasePrice": 280,
-        "hitCount": 0
+        "houseCost": 150,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 24,
+        "propertiesInSet": [26, 27, 29],
+        "rentMultiplier": [1, 5, 15, 35.41666667, 42.70833333, 50]
     },
     30: {
         "name": "Go To Jail!",
@@ -263,7 +415,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     31: {
         "name": "Pacific Avenue",
@@ -271,7 +424,13 @@ boardPositions = {
         "propertySet": "green",
         "canPurchase": True,
         "purchasePrice": 300,
-        "hitCount": 0
+        "houseCost": 200,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 26,
+        "propertiesInSet": [31, 32, 34],
+        "rentMultiplier": [1, 5, 15, 34.61538462, 42.30769231, 49.03846154]
     },
     32: {
         "name": "North Carolina Avenue",
@@ -279,7 +438,13 @@ boardPositions = {
         "propertySet": "green",
         "canPurchase": True,
         "purchasePrice": 300,
-        "hitCount": 0
+        "houseCost": 200,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 26,
+        "propertiesInSet": [31, 32, 34],
+        "rentMultiplier": [1, 5, 15, 34.61538462, 42.30769231, 49.03846154]
     },
     33: {
         "name": "Community Chest",
@@ -287,7 +452,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     34: {
         "name": "Penisylvania Avenue",
@@ -295,7 +461,13 @@ boardPositions = {
         "propertySet": "green",
         "canPurchase": True,
         "purchasePrice": 320,
-        "hitCount": 0
+        "houseCost": 200,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 28,
+        "propertiesInSet": [31, 32, 34],
+        "rentMultiplier": [1, 5.357142857, 16.07142857, 35.71428571, 42.85714286, 50]
     },
     35: {
         "name": "Short Line",
@@ -303,7 +475,11 @@ boardPositions = {
         "propertySet": "railroads",
         "canPurchase": True,
         "purchasePrice": 200,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 25,
+        "propertiesInSet": [5, 15, 25, 35],
+        "rentMultiplier": [0, 1, 2, 4, 8]
     },
     36: {
         "name": "Chance",
@@ -311,7 +487,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     37: {
         "name": "Park Place",
@@ -319,7 +496,13 @@ boardPositions = {
         "propertySet": "blue",
         "canPurchase": True,
         "purchasePrice": 350,
-        "hitCount": 0
+        "houseCost": 200,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 35,
+        "propertiesInSet": [37, 39],
+        "rentMultiplier": [1, 5, 14.28571429, 31.42857143, 37.14285714, 42.85714286]
     },
     38: {
         "name": "Luxury Tax",
@@ -327,7 +510,8 @@ boardPositions = {
         "propertySet": None,
         "canPurchase": False,
         "purchasePrice": None,
-        "hitCount": 0
+        "hitCount": 0,
+        "ownedBy": None,
     },
     39: {
         "name": "Boardwalk",
@@ -335,9 +519,43 @@ boardPositions = {
         "propertySet": "blue",
         "canPurchase": True,
         "purchasePrice": 400,
-        "hitCount": 0
+        "houseCost": 200,
+        "numHouses": 0,
+        "hitCount": 0,
+        "ownedBy": None,
+        "baseRent": 50,
+        "propertiesInSet": [37, 39],
+        "rentMultiplier": [1, 3.5, 10, 22, 26, 30]
     }
 }
+
+def getRentPrice(position, diceTotal):
+    owner = boardPositions[position]["ownedBy"]
+    propertiesInSet = boardPositions[position]["propertiesInSet"]
+    numOwned = 0
+    rentOwed = 0
+
+    for prop in propertiesInSet:
+        if boardPositions[prop]["ownedBy"] == owner:
+            numOwned+=1
+
+    if position == 12 or position == 28: #utilities
+        rentOwed = diceTotal * boardPositions[position]["rentMultiplier"][numOwned]
+
+    elif position == 5 or position == 15 or position == 25 or position == 35: #railroads
+        rentOwed = boardPositions[position]["baseRent"] * boardPositions[position]["rentMultiplier"][numOwned]
+
+    elif numOwned == len(propertiesInSet): # if all properties in the set are owned
+        if boardPositions[position]["numHouses"] > 0:
+            rentOwed = boardPositions[position]["baseRent"] * boardPositions[position]["rentMultiplier"][numOwned]
+        else:
+            rentOwed = boardPositions[position]["baseRent"] * 2
+
+    else:
+        rentOwed = boardPositions[position]["baseRent"] 
+
+    return round(rentOwed)
+
 usedChanceCards = []
 chanceCards = [
     {
@@ -421,10 +639,11 @@ chanceCards = [
   ]
 
 
+
 running = True
 turns = 0
 
-while running and turns < 1000000:
+while running and turns < 1000:
     for playerId in players:
         consecutiveTurns = 0
         turns += 1
@@ -440,40 +659,37 @@ while running and turns < 1000000:
 
             if players[playerId]["in-jail"]:
                 if dice1 == dice2:
-                    print("Player", playerId, " rolled doubles! You have been released from jail!")
+                    # print("Player", playerId, " rolled doubles! You have been released from jail!")
                     players[playerId]["in-jail"] = False
                     players[playerId]["position"] = (players[playerId]["position"] + total) % 40
                     boardPositions[players[playerId]["position"]]["hitCount"] += 1
                     rollAgain = False
                 else:
-                    print("sorry! you must roll doubles to be released from jail")
+                    # print("sorry! you must roll doubles to be released from jail")
+                    rollAgain = False
             else:
                 currentPosition = players[playerId]["position"]
                 newPosition = (currentPosition + total) % 40
                 boardPositions[newPosition]["hitCount"] += 1 
 
                 if newPosition < currentPosition:
-                    # print("Player", playerId, " passed start --> collect $200")
+                    print("Player", playerId, " passed start --> collect $200")
                     players[playerId]["balance"] = players[playerId]["balance"] + 200
                     
                 players[playerId]["position"] = newPosition
-                # print("Player", playerId, " landed at ", boardPositions[newPosition]["name"])
+                print("Player", playerId, " landed at ", boardPositions[newPosition]["name"])
 
                 if boardPositions[newPosition]["role"] == "tax":
-                    # print("Player", playerId, " owes taxes --> pay $100")
+                    print("Player", playerId, " owes taxes --> pay $100")
                     players[playerId]["balance"] = players[playerId]["balance"] - 100
-                elif boardPositions[newPosition]["role"] == "property":
-                    if boardPositions[newPosition]["canPurchase"]:
-                        if players[playerId]["balance"] > (4 * boardPositions[newPosition]["purchasePrice"]):
-                            # print("Player", playerId, " is purchasing this property --> pay ", boardPositions[newPosition]["purchasePrice"])
-                            players[playerId]["balance"] -= boardPositions[newPosition]["purchasePrice"]
-                            boardPositions[newPosition]["canPurchase"] = False
+
                 elif newPosition == 30:  #pos 30 is go to jail
                     print("Player", playerId, " go to jail!")
                     players[playerId]["position"] = 10
                     boardPositions[10]["hitCount"] += 1
                     players[playerId]["in-jail"] = True
                     rollAgain = False
+
                 elif newPosition == 7 or newPosition == 22 or newPosition == 26: #chance card
                     if len(chanceCards) > 0:
                         chanceCard = chanceCards.pop()
@@ -538,5 +754,50 @@ while running and turns < 1000000:
                     if not (chanceCard["action"] == "jail" and chanceCard["subaction"] == "getout"):
                         usedChanceCards.append(chanceCard)
 
+                elif boardPositions[newPosition]["role"] == "property":
+                    if boardPositions[newPosition]["ownedBy"]:
+                        if not boardPositions[newPosition]["ownedBy"] == playerId: #if someone else owns the property --> pay rent
+                            rentPrice = getRentPrice(newPosition, total)
+                            print("Player", playerId, " pays $", rentPrice," in rent at ", boardPositions[newPosition]["name"])
+                            players[playerId]["balance"] -= rentPrice
+                            players[boardPositions[newPosition]["ownedBy"]]["balance"] += rentPrice
+                            for player in players:
+                                print(players[player])
+                    elif boardPositions[newPosition]["canPurchase"]:
+                        if players[playerId]["balance"] > (4 * boardPositions[newPosition]["purchasePrice"]):
+                            print("Player", playerId, " is purchasing ", boardPositions[newPosition]["name"]," --> pay ", boardPositions[newPosition]["purchasePrice"])
+                            players[playerId]["balance"] -= boardPositions[newPosition]["purchasePrice"]
+                            boardPositions[newPosition]["canPurchase"] = False
+                            boardPositions[newPosition]["ownedBy"] = playerId
+                            players[playerId]["properties"][boardPositions[newPosition]["propertySet"]].append(newPosition)
+                            for player in players:
+                                print(players[player])
+            
+            if players[playerId]["balance"] < 0:
+                rollAgain = False
+                running = False
+                print("***Player #", playerId, " is out of money!")
+        
+
+        #check which properties are currently owned and decide to purchase houses:
+        ownedProperties = players[playerId]["properties"]
+        fullSets = []
+        for propertySet in ownedProperties:
+            if not (propertySet == "utilities" or propertySet == "railroads") and len(ownedProperties[propertySet]) > 0:
+                if len(ownedProperties[propertySet]) == len(boardPositions[ownedProperties[propertySet][0]]["propertiesInSet"]): #owns all properties in set
+                    fullSets.append(boardPositions[ownedProperties[propertySet][0]]["propertiesInSet"])
+
+        for s in fullSets:
+            for pos in s:
+                if boardPositions[pos]["numHouses"] < 5 and players[playerId]["balance"] > (2.5 * boardPositions[pos]["houseCost"]): #buy a house
+                    print("Player #", playerId, " bought a house for: ", boardPositions[pos]["name"])
+                    players[playerId]["balance"] -= boardPositions[pos]["houseCost"]
+                    boardPositions[pos]["numHouses"] += 1
+                    
+
+
 for pos in boardPositions:
-    print(pos, "\tcount: ", boardPositions[pos]["hitCount"], "\tpercentage: ", boardPositions[pos]["hitCount"]/1000000,"\tname: ", boardPositions[pos]["name"])
+    print(pos, "\tcount: ", boardPositions[pos]["hitCount"], "\tprobability: ", boardPositions[pos]["hitCount"]/1000,"\tname: ", boardPositions[pos]["name"])
+
+for player in players:
+    print(players[player])
