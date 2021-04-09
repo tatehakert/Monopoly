@@ -8,7 +8,7 @@ print("initializing all modules for pygame")
 
 pygame.init()
 
-#colors 
+#colors
 
 white = (255, 255, 255)
 black = (0, 0, 0)
@@ -37,7 +37,7 @@ colorSets = {
 #default background color
 default_background = (235, 243, 225)
 #current screen dimensions
-# need to have these be adjustable 
+# need to have these be adjustable
 screen_height = 1000
 screen_width = round(screen_height*(4/3))
 #initialize the screen
@@ -52,7 +52,7 @@ def message(msg,color,x_loc, y_loc, size):
 
 #class for a corner sqare
 class corner_square:
-   
+
    #constructor
     def __init__(self, position, propertyData):
         self.x_loc = 0
@@ -93,7 +93,7 @@ class board_square:
     #     temp = self.width
     #     self.width = self.height
     #     self.height = temp
-    
+
     #make the space horizontal, used on left and right rows
     def set_to_horizontal(self):
         temp = self.width
@@ -115,20 +115,20 @@ class board_square:
             sub_rect_height = self.height
 
         if(orientation == "bottom"):
-            sub_rect_x = self.x_loc 
+            sub_rect_x = self.x_loc
             sub_rect_y = self.y_loc + (self.height - (self.height/6))
             sub_rect_width = self.width
             sub_rect_height = self.height * 1/6
 
         if(orientation == "top"):
-            sub_rect_x = self.x_loc 
+            sub_rect_x = self.x_loc
             sub_rect_y = self.y_loc
             sub_rect_width = self.width
             sub_rect_height = self.height * 1/6
         #after setting the location and size, draw the color marker and outline it
 
-        color_marker = pygame.draw.rect(screen, card_color, (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 0)  
-        color_marker_outline = pygame.draw.rect(screen, (0,0,0), (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 2) 
+        color_marker = pygame.draw.rect(screen, card_color, (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 0)
+        color_marker_outline = pygame.draw.rect(screen, (0,0,0), (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 2)
 
     #draw the board square
     def draw(self):
@@ -138,7 +138,7 @@ class board_square:
         message_y = curr_card.centery
         message(self.propertyData["name"], (0,0,0), message_x,message_y,15)
 
-# def draw_corners(): 
+# def draw_corners():
 #     #top left corner
 #     top_left_corner = corner_square()
 #     top_left_corner.set_x_and_y(0,0)
@@ -194,7 +194,7 @@ def draw_board_position(position):
             card_y = starting_y + (increment * offset)
             colorOrientation = "left"
             newPosition.set_to_horizontal()
-        
+
 
         newPosition.set_x_and_y(card_x,card_y)
         newPosition.draw()
@@ -208,7 +208,7 @@ def draw_board_position(position):
 #     for i in range (9):
 #         test = board_square()
 #         test.set_x_and_y(card_x,card_y)
-        
+
 #         test.draw()
 #         if( i == 0 ) or (i == 1) or (i == 3):
 #             test.set_color(orange, "right")
@@ -298,6 +298,6 @@ while(test):
             quit()
         pygame.display.flip()
 
- 
- 
+
+
 #gameLoop()
