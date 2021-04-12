@@ -61,6 +61,10 @@ class corner_square:
         self.height = 1/6 * screen_height
         self.position = position
         self.propertyData = propertyData
+        self.topBorder = self.y_loc
+        self.bottomBorder = self.y_loc + self.height
+        self.rightBorder = self.x_loc + self.width
+        self.leftBorder = self.x_loc
     #set location
     def set_x_and_y (self, x_loc, y_loc):
         self.x_loc = x_loc
@@ -82,11 +86,24 @@ class board_square:
         self.height = screen_height * (1/6)
         self.position = position
         self.propertyData = propertyData
+        self.isHorizontal = False
+        self.boardSide = "none"
+        self.topBorder = self.y_loc
+        self.bottomBorder = self.y_loc + self.height
+        self.rightBorder = self.x_loc + self.width
+        self.leftBorder = self.x_loc
 
     #change the positions
     def set_x_and_y (self, x_loc, y_loc):
         self.x_loc = x_loc
         self.y_loc = y_loc
+        self.updateBorders()
+
+    def updateBorders(self):
+        self.topBorder = self.y_loc
+        self.bottomBorder = self.y_loc + self.height
+        self.rightBorder = self.x_loc + self.width
+        self.leftBorder = self.x_loc
 
     #make the space vertical, used on top and bottom rows
     # def set_to_vertical(self):
@@ -99,6 +116,11 @@ class board_square:
         temp = self.width
         self.width = self.height
         self.height = temp
+        self.isHorizontal = True
+        self.set_x_and_y(self.x_loc, self.y_loc)
+
+    def setBoardSide(self, boardSide):
+        self.boardSide = boardSide
 
     #set the space to correspond to a color, orientation is which side of the space the color designation needs to go on
     def set_color(self, card_color, orientation):
@@ -130,13 +152,115 @@ class board_square:
         color_marker = pygame.draw.rect(screen, card_color, (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 0)  
         color_marker_outline = pygame.draw.rect(screen, (0,0,0), (sub_rect_x, sub_rect_y,sub_rect_width, sub_rect_height), 2) 
 
+    def drawText(self, curr_card, fontSize):
+  
+        textRect = curr_card
+        #initialize text locationa and position limiting
+        firstLetterX = curr_card.centerx
+        firstLetterY = curr_card.centery
+        textLimiterX = curr_card.x + curr_card.width
+        textLimiterY = curr_card.y + curr_card.height 
+        
+        propName = self.propertyData["name"].split(' ')
+        wordsInName = len(propName)
+        #initialize for each side
+        if (self.boardSide == "top"):
+            firstLetterX = firstLetterX + 10
+            firstLetterY = firstLetterY + 10
+            textLimiterX = firstLetterX + self.width - 10
+            textLimiterY = firstLetterY + self.height - 10
+        if (self.boardSide == "bottom"):
+            firstLetterX = firstLetterX + 10
+            firstLetterY = firstLetterY + 10 + (1/6*self.height)
+            textLimiterX = firstLetterX + self.width - 10
+            textLimiterY = firstLetterY + self.height - 10 - (1/6*self.height)
+        if(self.boardSide == "left"):
+            firstLetterX = firstLetterX + 10
+            firstLetterY = firstLetterY + 10
+            textLimiterX = firstLetterX + self.width - 10
+            textLimiterY = firstLetterY + self.height - 10
+        if(self.boardSide == "right"):
+            firstLetterX = firstLetterX + (1/6*self.width) + 10
+            firstLetterY = firstLetterY + 10
+            textLimiterX = firstLetterX + self.width - ((1/6*self.width) + 10)
+            textLimiterY = firstLetterY + self.height - 10
+        nextLetterX = firstLetterX
+        nextLetterY = firstLetterY
+
+        wordIndex = 0
+        for word in propName:
+            letterIndex = 0
+            wordIndex +=1
+            wordLen = len(word)
+            overrun = True
+            fontSize = fontSize
+            #reset font size until the word should fit in the box
+            while(overrun):
+                if((wordLen * fontSize)+firstLetterX > textLimiterX and self.isHorizontal):
+                    overrun = True
+                elif((wordLen * fontSize)+firstLetterY > textLimiterY and not self.isHorizontal):
+                    overrun = True
+                else:
+                    overrun = False
+                if not (overrun):
+                    break
+                if(overrun):
+                    fontSize = fontSize - 1
+            if not (overrun):
+                #if it fits in the box
+                for letter in word:
+                    #print letter by letter
+                    letterIndex+=1
+                    font = pygame.font.Font('freesansbold.ttf',fontSize)
+                    textRect.center = (nextLetterX , nextLetterY)
+                    text = font.render (letter, True,black, None)
+                    screen.blit(text,textRect)
+                    #chance prints diagonally
+                    if(word == "Chance"):
+                        nextLetterX = nextLetterX + self.width/8
+                        nextLetterY = nextLetterY + self.height/8
+
+                    #print sideways
+                    elif(self.isHorizontal):
+                        nextLetterX = nextLetterX + (fontSize)
+                        nextLetterY =  nextLetterY
+                    #print vertically
+                    else:
+                        nextLetterX = nextLetterX
+                        nextLetterY = nextLetterY + (fontSize)
+                    #this is the case where we are at the end of a word so we return
+                    if(letterIndex == wordLen):
+                        letterIndex = 0
+                        if(self.isHorizontal):
+                            nextLetterX = firstLetterX
+                            nextLetterY = firstLetterY + (5/4*fontSize) * wordIndex
+                        elif not(self.isHorizontal):
+                            nextLetterX = firstLetterX + (5/4*fontSize) * wordIndex+ self.width/3
+                            nextLetterY = firstLetterY 
+
+
+            
     #draw the board square
     def draw(self):
         curr_card = pygame.draw.rect(screen, (0, 0, 0), (self.x_loc, self.y_loc,self.width, self.height), 2)
+        
+        
         #message_x = curr_card.centerx
-        message_x = self.x_loc + 50
-        message_y = curr_card.centery
-        message(self.propertyData["name"], (0,0,0), message_x,message_y,15)
+        #message_x = self.x_loc + 50
+        #message_y = curr_card.centery
+        #if (self.isHorizontal == False):
+        
+        if(self.isHorizontal):
+            fontSize = round(1/5 * self.height)
+        if not (self.isHorizontal):
+            fontSize = round(1/5 * self.width)
+        self.drawText(curr_card, fontSize)
+            
+
+
+            
+        #screen.draw.text(self.propertyData["name"],(0,0,0),message_x, message_y,15)
+        #message(self.propertyData["name"], (0,0,0), message_x,message_y,15)
 
 # def draw_corners(): 
 #     #top left corner
@@ -171,6 +295,7 @@ def draw_board_position(position):
             card_x = starting_x + (increment * offset)
             card_y = screen_height - screen_height*(1/6)
             colorOrientation = "top"
+            newPosition.setBoardSide("bottom")
         elif position in range(10,20): # left side
             starting_y = screen_height - screen_height*(1/6) - screen_height*(.074)
             increment = -(screen_height*(.074))
@@ -179,6 +304,7 @@ def draw_board_position(position):
             card_y = starting_y + (increment * offset)
             colorOrientation = "right"
             newPosition.set_to_horizontal()
+            newPosition.setBoardSide("left")
         elif position in range(20,30): # top side
             starting_x = screen_height*(1/6)
             increment = screen_height*(.074)
@@ -186,6 +312,7 @@ def draw_board_position(position):
             card_x = starting_x + (increment * offset)
             card_y = 0
             colorOrientation = "bottom"
+            newPosition.setBoardSide("top")
         elif position in range(30,40): # right side
             starting_y =  screen_height*(1/6)
             increment = screen_height*(.074)
@@ -194,6 +321,7 @@ def draw_board_position(position):
             card_y = starting_y + (increment * offset)
             colorOrientation = "left"
             newPosition.set_to_horizontal()
+            newPosition.setBoardSide("right")
         
 
         newPosition.set_x_and_y(card_x,card_y)
@@ -280,9 +408,30 @@ def draw_board():
     for position in boardPositions:
         draw_board_position(position)
 
+def draw_side_menu():
+    side_menu = pygame.draw.rect(screen, (0, 0, 0), (1050, 30,2/12*screen_width, 27/28*screen_height), 3)  # width = 3
+    message("Player 1" , black, side_menu.x + 10, side_menu.width*2/14, 25)
+    message("Player 1 Properties" , black, side_menu.x + 10, side_menu.width*6/14, 25)
+    message("Player 1 Cash Amount" , black, side_menu.x + 10, side_menu.width*10/14, 25)
+
+    message("Player 2" , black, side_menu.x + 10, side_menu.width*16/14, 25)
+    message("Player 2 Properties" , black, side_menu.x + 10, side_menu.width*20/14, 25)
+    message("Player 2 Cash Amount" , black, side_menu.x + 10, side_menu.width*24/14, 25)
+
+    message("Player 3" , black, side_menu.x + 10, side_menu.width*30/14, 25)
+    message("Player 3 Properties" , black, side_menu.x + 10, side_menu.width*34/14, 25)
+    message("Player 3 Cash Amount" , black, side_menu.x + 10, side_menu.width*38/14, 25)
+
+    message("Player 4" , black, side_menu.x + 10, side_menu.width*44/14, 25)
+    message("Player 4 Properties" , black, side_menu.x + 10, side_menu.width*48/14, 25)
+    message("Player 4 Cash Amount" , black, side_menu.x + 10, side_menu.width*52/14, 25)
+
+
+
+
 
 draw_board()
-
+draw_side_menu()
 
 
 
@@ -291,7 +440,7 @@ clock = pygame.time.Clock()
 test = True
 while(test):
     for event in pygame.event.get():
-        message("Monopoly", red,420,550,120)
+        message("Monopoly", red,screen_width*.25,screen_height * .45,120)
         print(event)
         if event.type == pygame.QUIT:
             print("quitting test screen")
